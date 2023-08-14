@@ -1,0 +1,161 @@
+.header-img {
+    width: 30%;
+    height: 100px;
+
+  }
+
+  .space-header {
+    color: black;
+    font-size: 5px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid var(--cultured);
+    margin-bottom: 1px;
+  }
+
+
+/* Styles pour le badge numérique */
+.badge {
+    font-size: 9px;
+    position: absolute; /* Positionnement absolu par rapport au conteneur */
+    top: 20px; /* Position verticale du badge */
+    right: 55px; /* Position horizontale du badge */
+    background-color: #f00; /* Couleur de fond du badge */
+    color: black; /* Couleur du texte du badge */
+    padding: 3px 7px; /* Espacement intérieur du badge */
+    border-radius: 50%; /* Forme ronde du badge */
+  }
+
+
+  
+
+
+.product-minimal { margin-bottom: 30px; }
+
+.product-minimal .product-showcase { margin-bottom: 10px; }
+
+
+.product-minimal .showcase {
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 15px;
+border: 1px solid var(--cultured);
+padding: 15px;
+border-radius: var(--border-radius-md);
+}
+
+.product-minimal .showcase:not(:last-child) { margin-bottom: 15px; }
+
+.product-minimal .showcase-content { width: calc(100% - 85px); }
+
+.product-minimal .showcase-title {
+color: var(--eerie-black);
+font-size: var(--fs-7);
+font-weight: var(--weight-600);
+text-transform: capitalize;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+margin-bottom: 2px;
+}
+
+.product-minimal .showcase-category {
+width: max-content;
+color: var(--davys-gray);
+font-size: var(--fs-8);
+text-transform: capitalize;
+margin-bottom: 3px;
+}
+
+.product-minimal .showcase-category:hover { color: var(--salmon-pink); }
+
+.product-minimal .price-box {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.product-minimal .price {
+font-size: var(--fs-7);
+font-weight: var(--weight-700);
+color: var(--salmon-pink);
+}
+
+.product-minimal .price-box del {
+font-size: var(--fs-9);
+color: var(--sonic-silver);
+}
+
+
+
+
+/* bouton du cadre*/
+
+
+.showcase-container button:hover{
+  cursor: pointer;
+ color: palevioletred;
+}
+
+
+
+/* Styles pour la fenêtre modale */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  width: 60%;
+  max-width: 400px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+}
+
+/* Styles pour le formulaire */
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+

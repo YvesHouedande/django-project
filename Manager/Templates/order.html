@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Résumé du Panier</title>
+  <style>
+    *{
+        margin: 0;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px; /* Espacement entre les éléments */
+      justify-content: space-between; /* Espacement entre les colonnes */
+      margin: 20px;
+      border: 1px solid #403c3c;
+
+    }
+
+    .bottom{
+        display: flex;
+        justify-content: space-between;
+        width: 70%;
+        margin: 30px auto;
+    }
+
+    .btn_btn{
+        font-size: 23px;
+        text-decoration: none;
+        
+    }
+
+    .part{
+        flex-basis: calc(50% - 10px);
+      border: 1px solid #ddd;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px  auto;
+      font-family: Arial, sans-serif;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #c1a2a2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .th_img{
+        width: 150px;
+        height: 100px;
+    }
+    .part_title{
+        margin: auto;
+        text-align: center;
+        font-size: 25px;
+        color: rgb(195, 58, 58);
+    }
+    .Panier {
+      text-align: center;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="Panier">Résumé du Panier</h1>
+  <div class="container">
+    <div class="part">
+        <h3 class="part_title">Liste des intrants</h3>
+        <table>
+            <tr>
+              <th>Produit</th>
+              <th>Quantité</th>
+              <th>reference</th>
+            </tr>
+            {% for product in int_products %}
+            <tr>
+                <td> {{product.name}} </td>
+                <td>{{product.qte}}</td>
+                <td>{{product.ref}}</td>
+              </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!--  -->
+    <div class="part">
+        <h3 class="part_title">Liste des Sorties</h3>
+        <table>
+            <tr>
+              <th>Produit</th>
+              <th>Quantité</th>
+              <th>reference</th>
+            </tr>
+            {% for product in sort_products %}
+            <tr>
+                <td> {{product.name}} </td>
+                <td>{{product.qte}}</td>
+                <td>{{product.ref}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!--  -->
+    <div class="part">
+        <h3 class="part_title">Liste des Entrees</h3>
+        <table>
+            <tr>
+              <th>Produit</th>
+              <th>Quantité</th>
+              <th>reference</th>
+            </tr>
+            {% for product in Ent_products %}
+            <tr>
+                <td> {{product.name}} </td>
+                <td>{{product.qte}}</td>
+                <td>{{product.ref}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    {% comment %}  {% endcomment %}
+
+    <div class="part">
+      <h3 class="part_title">Liste des Outils</h3>
+      <table>
+          <tr>
+            <th>Produit</th>
+            <th>Quantité</th>
+            <th>reference</th>
+          </tr>
+          {% for product in out_products %}
+          <tr>
+              <td> {{product.name}} </td>
+              <td>{{product.qte}}</td>
+              <td>{{product.ref}}</td>
+          </tr>
+          {% endfor %}
+      </table>
+  </div>
+</div>
+  </div>
+  <!--  -->
+
+
+</div>
+  <div class="bottom">
+    <p class="btn_btn"><a href="{% url 'product_list' %}" >Retour</a></p>
+    <p class="btn_btn"><a href="{% url 'HandleOrder' %}">Envoyer la commande</a></p>
+  </div>
+</body>
+</html>

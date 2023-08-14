@@ -1,0 +1,59 @@
+# Fichiers générés par Django
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Fichiers générés par IDE et éditeurs de code
+.vscode/
+.idea/
+*.sublime-*
+*.swo
+*.swp
+
+# Fichiers spécifiques à l'environnement virtuel
+venv/
+env/
+*.env
+
+# Fichiers de configuration personnels
+config.ini
+
+# Fichiers de sauvegarde et de cache
+*.bak
+*.log
+*.cache
+
+# Fichiers spécifiques au déploiement
+*.ini
+*.conf
+*.env
+*.ini
+*.conf
+*.env
+
+# Dossiers de fichiers statiques et de médias
+staticfiles/
+media/
+
+# Dossiers générés par les outils de gestion des dépendances
+node_modules/
+bower_components/
+pip-wheel-metadata/
+
+# Fichiers spécifiques à l'environnement de développement
+.env
+
+# Fichiers de débogage
+debug.log
+
+# Fichiers spécifiques à la documentation générée
+docs/_build/
+
+# Fichiers de sauvegarde temporaires
+*.bak
+
+# Dossiers de sauvegarde temporaires
+backup*/

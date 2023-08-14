@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de connexion</title>
+    <link rel="stylesheet" href="{% static 'css/connexion.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper">
+        <form method="post">
+            {% csrf_token %}
+            <h1>Page de connexion</h1>
+            <div class="input-box">
+                <input type="text" name="username" placeholder="Nom" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="Mot de passe" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox"> Me reconnecter </label>
+            </div>
+            <button type="submit" class="btn">Connexion</button>
+            {% if messages %}
+            <div class="register-link" style="color:red">
+                {% for message in messages %}
+                    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </form>
+    </div>
+
+
+</body>
+</html>
