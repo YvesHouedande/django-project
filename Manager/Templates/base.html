@@ -1,3 +1,4 @@
+{% load static %}
 
 <!DOCTYPE html>
 <html>
@@ -14,17 +15,334 @@
       rel="stylesheet">
 </head>
 <body>
-    <header>
-    <div class="header-main">
+        <header>
+            <div class="header-main">
         
-    </header>
+                <div class="container">
+          
+                  <a href="#" class="header-logo">
+                    <img src="{% static 'logo/logo.svg' %}" alt="YELLO's logo" width="120" height="36">
+                  </a>
+          
+                  <div class="header-search-container">
+                <FORm  method="get" action="{% url 'filter_products' %}"> 
+                  {% csrf_token %}
+                  <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
+                
+                  <button class="search-btn">
+                    <ion-icon name="search-outline"></ion-icon>
+                  </button>
+                </FORm>
+                  </div>
+                  <a href="{% url 'listPanier' %}">
+                  <div class="header-user-actions">
+           
+                    <button class="action-btn" href="index.css">
+                      <ion-icon name="bag-handle-outline"></ion-icon>
+                      <span class="count panier" id="count-Unique">{{cart_total}}</span>
+                    </button>
+          
+                  </div>
+                  </a>
+                </div>
+          
+              </div>
+          
+              <nav class="desktop-navigation-menu">
+          
+                <div class="container">
+          
+                  <ul class="desktop-menu-category-list">
+          
+                    <li class="menu-category">
+                      <a href="#" class="menu-title">Home</a>
+                    </li>
+          
+                    <li class="menu-category">
+                      <a href="#" class="menu-title">Categories</a>
+          
+                      <div class="dropdown-panel">
+                        {% for cats in categories_grouped %}
+                        
+                        <ul class="dropdown-panel-list">
+                          <li class='menu-title'><a ></a></li>
+                         {% for cat in  cats %}
+          
+                          <li class="panel-list-item">
+                            <a href="{% url 'filter_product_cat' category_name=cat.nom %}">{{ cat.nom }}</a>
+                          </li>
+                          {% endfor %}
+                          <li class="panel-list-item">
+                            <a href="#">
+                              <img src="{% static '/images/electronique/biometrique.jpg' %}" alt="headphone collection" width="250"
+                                height="119">
+                            </a>
+                          </li>
+                          
+                        </ul>
+                        {% endfor %}
+                      </div>
+                    </li>
+          
+                    <li class="menu-category">
+                      <a href="{% url 'filter_products' kind='Intrant' %}" class="menu-title">Intrants</a>
+                    </li>
+          
+                    <li class="menu-category">
+                      <a href="{% url 'filter_products' kind='Outils' %}" class="menu-title">Outils </a>
+                    </li>
+          
+                    <li class="menu-category">
+                      <a href="{% url 'filter_products' kind='Entree' %}" class="menu-title">Entrees</a>
+                    </li>
+          
+                    <li class="menu-category">
+                      <a href="{% url 'filter_products' kind='Sortie' %}" class="menu-title">Sorties</a>
+                    </li>
+          
+                  </ul>
+          
+                </div>
+          
+              </nav>
+        
+            <div class="mobile-bottom-navigation">
+        
+              <button class="action-btn" data-mobile-menu-open-btn>
+                <ion-icon name="menu-outline"></ion-icon>
+              </button>
+        
+              <button class="action-btn">
+                <ion-icon name="home-outline"></ion-icon>
+              </button>
+        
+        
+              <button class="action-btn">
+                <ion-icon name="bag-handle-outline"></ion-icon>
+        
+                <span class="count">0</span>
+              </button>
+        
+            </div>
+          </header>
+        
+
     
     <main>
         {% block content %}{% endblock %}
     </main>
-    
+
+
     <footer>
-        <!-- Pied de page, informations de copyright, etc. -->
-    </footer>
+
+        <div class="footer-category"></div>
+    
+        <div class="footer-nav">
+    
+          <div class="container">
+    
+            <ul class="footer-nav-list">
+    
+              <li class="footer-nav-item">
+                <h2 class="nav-title">Nos Categories</h2>
+              </li>
+    
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Sortie</a>
+              </li>
+    
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Entrée</a>
+              </li>
+    
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Intrant</a>
+              </li>
+    
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Outils</a>
+              </li>
+    
+    
+            </ul>
+    
+            <ul class="footer-nav-list">
+            
+              <li class="footer-nav-item">
+                <h2 class="nav-title">Products</h2>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Prices drop</a>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">New products</a>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Best sales</a>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Contact us</a>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Sitemap</a>
+              </li>
+            
+            </ul>
+    
+            <ul class="footer-nav-list">
+            
+              <li class="footer-nav-item">
+                <h2 class="nav-title">Our Company</h2>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Delivery</a>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Legal Notice</a>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Terms and conditions</a>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">About us</a>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Secure payment</a>
+              </li>
+            
+            </ul>
+    
+            <ul class="footer-nav-list">
+            
+              <li class="footer-nav-item">
+                <h2 class="nav-title">Services</h2>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Prices drop</a>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Nouveaux produuits</a>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Best sales</a>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Contact us</a>
+              </li>
+            
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">Sitemap</a>
+              </li>
+            
+            </ul>
+    
+            <ul class="footer-nav-list">
+    
+              <li class="footer-nav-item">
+                <h2 class="nav-title">Contact</h2>
+              </li>
+    
+              <li class="footer-nav-item flex">
+                <div class="icon-box">
+                  <ion-icon name="location-outline"></ion-icon>
+                </div>
+    
+                <address class="content">
+                  Y'ELLOW LAB, YAMOUSSOUKRO, Côte d'Ivoire
+                  
+                </address>
+              </li>
+    
+              <li class="footer-nav-item flex">
+                <div class="icon-box">
+                  <ion-icon name="call-outline"></ion-icon>
+                </div>
+    
+                <a href="tel:+225 0709749287" class="footer-nav-link">+225 0000000000</a>
+              </li>
+    
+              <li class="footer-nav-item flex">
+                <div class="icon-box">
+                  <ion-icon name="mail-outline"></ion-icon>
+                </div>
+    
+                <a href="mailto:yello.lab@inphb.ci" class="footer-nav-link">yello.lab@inphb.ci</a>
+              </li>
+    
+            </ul>
+    
+            <ul class="footer-nav-list">
+    
+              <li class="footer-nav-item">
+                <h2 class="nav-title">Follow Us</h2>
+              </li>
+    
+              <li>
+                <ul class="social-link">
+    
+                  <li class="footer-nav-item">
+                    <a href="#" class="footer-nav-link">
+                      <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                  </li>
+    
+                  <li class="footer-nav-item">
+                    <a href="#" class="footer-nav-link">
+                      <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                  </li>
+    
+                  <li class="footer-nav-item">
+                    <a href="#" class="footer-nav-link">
+                      <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                  </li>
+    
+                  <li class="footer-nav-item">
+                    <a href="#" class="footer-nav-link">
+                      <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                  </li>
+    
+                </ul>
+              </li>
+    
+            </ul>
+    
+          </div>
+    
+        </div>
+    
+        <div class="footer-bottom">
+    
+          <div class="container">
+    
+            <img src="{% static '/images/payment.png' %}" alt="payment method" class="payment-img">
+    
+            <p class="copyright">
+              Copyright &copy; <a href="#">Y'ELLO LAB</a> all rights reserved.
+            </p>
+    
+          </div>
+    
+        </div>
+    
+      </footer>
+    
+      {% include "scripts.html" %}
 </body>
 </html>

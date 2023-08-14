@@ -19,7 +19,7 @@ def product_list(request):
     nb_per_col = (nb_categories + 3) // 4  
     products = Product.objects.all()
     nb = [Category.objects.count(), Product.objects.count()]
-    cart_total = sum([int(key) for key in request.session.get("cart", {}).values() ])
+    
     if categories:
         categories_grouped = [categories[i:i+nb_per_col] for i in range(0, nb_categories, nb_per_col)]
     else:
@@ -28,7 +28,7 @@ def product_list(request):
         'products': products,
         'categories_grouped': categories_grouped,
         'nb':nb,
-        "cart_total":cart_total
+        # "cart_total":cart_total
                }
     return render(request, 'index.html', context)
 

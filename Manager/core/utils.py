@@ -20,3 +20,7 @@ def update_stock_on_validation(order):
         product = ligne_order.product
         product.quantity -= ligne_order.quantite
         product.save()
+
+def context_total_cart(request):
+    cart_total = sum([int(key) for key in request.session.get("cart", {}).values() ])
+    return {"cart_total": cart_total}
