@@ -104,7 +104,7 @@
               <h2 class="title">Produit</h2>
   
               <div class="product-grid">
-                {% for product in products %}
+                {% for product in products_page %}
                 <div class="showcase">
   
                   <div class="showcase-banner">
@@ -179,10 +179,75 @@
       <div class="container">
 
         <div class="testimonials-box">
-
         </div>
-
       </div>
-
     </div>
+
+    <div class="pagination">
+      {% if products_page.has_previous %}
+        <a href="?page=1" class="arrow">&laquo;</a>
+        <a href="?page={{ products_page.previous_page_number }}" class="arrow">&lt;</a>
+      {% else %}
+        <span class="arrow disabled">&laquo;</span>
+        <span class="arrow disabled">&lt;</span>
+      {% endif %}
+    
+      {% for page_num in products_page.paginator.page_range %}
+        {% if products_page.number == page_num %}
+          <span class="page active">{{ page_num }}</span>
+        {% else %}
+          <a href="?page={{ page_num }}" class="page">{{ page_num }}</a>
+        {% endif %}
+      {% endfor %}
+    
+      {% if products_page.has_next %}
+        <a href="?page={{ products_page.next_page_number }}" class="arrow">&gt;</a>
+        <a href="?page={{ products_page.paginator.num_pages }}" class="arrow">&raquo;</a>
+      {% else %}
+        <span class="arrow disabled">&gt;</span>
+        <span class="arrow disabled">&raquo;</span>
+      {% endif %}
+    </div>
+
+    <style>
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.page, .arrow {
+  text-decoration: none;
+  color: #333;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  margin: 0 2px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.page:hover, .arrow:hover {
+  background-color: #ddd;
+}
+
+.page.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.arrow {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Optional: Style for previous and next buttons */
+.pagination a:first-child {
+  margin-left: 0;
+}
+
+.pagination a:last-child {
+  margin-right: 0;
+}
+    </style>
     {% endblock content %}

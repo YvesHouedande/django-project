@@ -6,6 +6,7 @@ from .forms import LoginForm
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 
 def profiles_list(request):
@@ -19,6 +20,10 @@ def product_list(request):
     nb_per_col = (nb_categories + 3) // 4  
     products = Product.objects.all()
     nb = [Category.objects.count(), Product.objects.count()]
+
+    paginator = Paginator(products, 12) 
+    page_number = request.GET.get('page')  
+    products_page = paginator.get_page(page_number)
     
     if categories:
         categories_grouped = [categories[i:i+nb_per_col] for i in range(0, nb_categories, nb_per_col)]
@@ -29,6 +34,7 @@ def product_list(request):
         'categories_grouped': categories_grouped,
         'nb':nb,
         # "cart_total":cart_total
+        'products_page':products_page
                }
     return render(request, 'index.html', context)
 
@@ -74,8 +80,14 @@ def filter_products(request, kind=None, category_name=None):
         products = products.filter(kind=kind)
     if category_name:
         products = products.filter(category__nom=category_name)
+
+    paginator = Paginator(products, 3)
+    page_number = request.GET.get('page')  
+    products_page = paginator.get_page(page_number)     
     context = {
+
         'products': products,
+        "products_page":products_page,
         'kind': kind,
     }
 
